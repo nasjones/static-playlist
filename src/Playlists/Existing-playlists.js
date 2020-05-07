@@ -39,8 +39,8 @@ export default class ExistingPlaylist extends Component {
                         <div id="main">
                             {output}
                             <div className="add">
-                                <Link to={'/add-note'}  >
-                                    <h2 className="addFolder">Add note</h2>
+                                <Link to={'/homepage'}  >
+                                    <h2 className="addFolder">Create a new playlist</h2>
                                 </Link>
                             </div>
                         </div>

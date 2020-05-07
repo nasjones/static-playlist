@@ -1,13 +1,11 @@
 import React, { Component } from 'react'
 import Playlist from './Playlist'
 import './Playlist-Display.css'
-import playStore from '../playStore'
 import songStore from '../songStore'
-// import './Landing.css'
+
 
 
 export default class PlaylistDisplay extends Component {
-    _isMounted = false;
 
     constructor(props) {
         super(props)
@@ -34,8 +32,7 @@ export default class PlaylistDisplay extends Component {
         })
     }
 
-    componentDidMount() {
-        this._isMounted = true;
+    fetcher = () => {
         let playlistId = this.props.match.params.playlistId
         console.log(playlistId)
 
@@ -47,25 +44,36 @@ export default class PlaylistDisplay extends Component {
         console.log(songStore)
         this.setPlaylist(playlist)
         let runtime = 0
-        let i = 0;
         let songArray = []
+        let chosen = []
 
         while (runtime < playlist.length) {
-            // console.log(i)
-            let song = {
-                id: songStore[i].id,
-                url: songStore[i].url,
-                name: songStore[i].title,
-                length: songStore[i].length,
-                explicit: songStore[i].explicit,
+            let i = Math.floor(Math.random() * 50);
+
+            if (!chosen.includes(i)) {
+                chosen.push(i)
+
+                let song = {
+                    id: songStore[i].id,
+                    url: songStore[i].url,
+                    name: songStore[i].title,
+                    length: songStore[i].length,
+                    explicit: songStore[i].explicit,
+                }
+                songArray.push(song)
+                runtime += song.length
             }
-            // console.log(song)
-            songArray.push(song)
-            runtime += song.length
-            i++;
+            else {
+            }
+
         }
         this.addSongs(songArray)
         console.log(songArray)
+
+    }
+
+    componentDidMount() {
+        this.fetcher()
 
     }
 
@@ -81,25 +89,11 @@ export default class PlaylistDisplay extends Component {
     render() {
         if (this.state.playlist === null) return <h1>Loading..</h1>;
 
-        // let songDisplay = this.state.songs.map(song => {
-        //     return <Song track={song} key={song.id} />
-        // })
-        return (
-            // <PlaylistContext.Consumer>
-            //     {(value) => {
-            //         let output = this.mounter(value)
-            //         console.log(output)
-            //         return output && (
-            <Playlist playlist={this.state.playlist} songs={this.state.song} />
-            //     )
-            // }
-            // }
 
-            // </PlaylistContext.Consumer>
-            // )
-            // {/* } */}
-            // }
-            // {/* </PlaylistContext.Consumer > */}
+        return (
+
+            <Playlist playlist={this.state.playlist} songs={this.state.song} clicker={this.fetcher} />
+
 
         )
 

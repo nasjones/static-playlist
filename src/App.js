@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Link, Switch } from 'react-router-dom';
 import './App.css';
-import config from './config';
 import PlaylistContext from './PlaylistContext'
 import Landing from './Landingpage/Landing'
 import Homepage from './Homepage/Homepage'
