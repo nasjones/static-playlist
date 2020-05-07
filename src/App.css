@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap');
+html {
+  background-image: radial-gradient(black, rgb(44, 44, 44));
+  color: white;
+}
+
+header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  /* flex: 1; */
+}
+
+header>hr {
+  width: 100%;
+}
+
+h1 {
+  font-family: 'Bungee Shade', cursive;
+  font-size: 3em;
+}
+
+.App {
+  /* background-image: url(./background.jpg); */
+  background-size: auto;
+  height: inherit;
+}
+
+#home-link {
+  margin: 20px;
+}
+
+a, a:visited, a:hover, a:active {
+  color: white;
+}
