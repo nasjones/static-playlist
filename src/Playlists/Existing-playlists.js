@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-// import NoteList from './NoteHandle/NoteList'
-import Nav from '../Nav'
 import Playlister from './Playlister'
 import { Link } from 'react-router-dom'
 import PlaylistContext from '../PlaylistContext'

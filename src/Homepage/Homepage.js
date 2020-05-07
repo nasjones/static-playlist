@@ -1,14 +1,12 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 import PlaylistContext from '../PlaylistContext'
 import './Homepage.css'
 import GenreCheck from './GenreCheck'
 import ValidationError from '../ValidationError'
-import config from '../config'
+// import playlists from '../playStore'
 
 
 export default class HomePage extends Component {
-    _isMounted = false;
     constructor(props) {
         super(props)
         this.state = {
@@ -25,7 +23,6 @@ export default class HomePage extends Component {
     }
 
     fieldChange = e => {
-
         this.setState({
             selectedId: e.target.id,
             selectedGen: e.target.value
@@ -79,8 +76,6 @@ export default class HomePage extends Component {
         const genre = this.state.selectedId
         if (genre === null)
             return "You must select a genre."
-        // if (genres.length > 1)
-        //     return "Sorry only one genre can be selected at a time."
     }
 
     validateTitle = () => {
@@ -96,46 +91,18 @@ export default class HomePage extends Component {
         e.preventDefault();
         let time = (3600000 * this.state.hour) + (60000 * this.state.min)
         let newPlaylist = {
-            title: this.state.title.trim(),
-            length: time,
+            id: value.playlists.length + 1,
+            name: this.state.title.trim(),
             genre_id: this.state.selectedId,
-            author: 1
+            length: time,
         }
 
+        window.globe.playStore.push(newPlaylist)
+        console.log(window.globe.playStore)
+        this.props.history.push(`/playlist-display/${newPlaylist.id}`)
+        // return [...value.playlists, newPlaylist]
 
-        fetch(`${config.ENDPOINT}/playlists`, {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(newPlaylist),
-        })
-            .then(res => {
-                if (!res.ok)
-                    return res.json().then(e => Promise.reject(e))
-                return res.json()
-            })
-            .then(res => {
 
-                value.pageUpdate()
-                this.props.history.push(`/playlist-display/${res.id}`,
-                    {
-                        genres: value.genres,
-                        time: time
-                    }
-                )
-            })
-            .catch(error => {
-                console.error({ error })
-            })
-    }
-
-    componentDidMount() {
-        this._isMounted = true;
-    }
-
-    componentWillUnmount() {
-        this._isMounted = false;
     }
 
     render() {
@@ -193,9 +160,8 @@ export default class HomePage extends Component {
                                         {genres}
                                     </div>
                                 </fieldset>
-                                <button type="submit" id="create" onClick={e => this.subHandle(e, value)} disabled={timeError || genreError || titleError}>Create your playlist!</button>
+                                <button type="submit" id="create" onClick={e => value.playlists = this.subHandle(e, value)} disabled={timeError || genreError || titleError}>Create your playlist!</button>
                             </form>
-                            <Link to={'/playlist-display/3'} >Here</Link>
                         </div>
                     )
                 }

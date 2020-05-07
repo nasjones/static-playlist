@@ -9,19 +9,16 @@ export default function Nav(props) {
     // console.log(props)
 
     let output = (value) => {
-        // console.log(value)
-
-
-
-        return value.playlists.slice(value.playlists.length - 11, value.playlists.length - 1).reverse().map(playlist => {
-            let genre = value.genres.find(genre => {
-                return genre.id === playlist.genre_id
+        console.log(value)
+        return window.globe.playStore.slice(window.globe.playStore.length - 11, window.globe.playStore.length - 1).reverse().map(playlist => {
+            let genre = window.globe.genreStore.find(genre => {
+                return genre.id == playlist.genre_id
             })
 
             return genre && (
                 <Link exact="true" key={playlist.id} to={`/playlist-display/${playlist.id}`}>
                     <article className="navLink">
-                        <h3 id={playlist.id} >{playlist.title}</h3>
+                        <h3 id={playlist.id} >{playlist.name}</h3>
                         <span>Genre:{genre.name}</span>
                     </article>
                 </Link>

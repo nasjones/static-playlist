@@ -1,14 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap');
-html {
-  background-image: radial-gradient(black, rgb(44, 44, 44));
-  color: white;
-}
-
 header {
   text-align: center;
   display: flex;
   flex-direction: column;
-  /* flex: 1; */
 }
 
 header>hr {
@@ -21,7 +15,6 @@ h1 {
 }
 
 .App {
-  /* background-image: url(./background.jpg); */
   background-size: auto;
   height: inherit;
 }
@@ -31,5 +24,5 @@ h1 {
 }
 
 a, a:visited, a:hover, a:active {
-  color: white;
+  color: black;
 }

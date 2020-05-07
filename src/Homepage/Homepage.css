@@ -5,7 +5,6 @@
 #genres {
     display: flex;
     flex-wrap: wrap;
-    font-family: 'kavoon', cursive;
     margin: 10px;
 }
 
@@ -42,7 +41,6 @@ select {
     margin: 0 auto;
     font-family: 'Open Sans', 'Helvetica Neue', 'Segoe UI', 'Calibri', 'Arial', sans-serif;
     font-size: 18px;
-    color: #60666d;
 }
 
 #hour-set #min-set {
@@ -50,10 +48,10 @@ select {
 }
 
 .genre-option {
+    border: 2px solid black;
     flex: 1 0 25%;
     margin: 8px;
     height: 75px;
-    background-color: rgb(63, 139, 189);
     font-size: 1.8em;
     border-radius: 30%;
     padding-top: 3%;
@@ -69,18 +67,10 @@ select {
     margin: 0;
 }
 
-.gen-selected, .genre-option:focus-within {
-    background-image: linear-gradient(to top right, rgb(243, 111, 255), rgb(255, 229, 111));
-    color: black;
-}
-
-.genre-option:hover, .genre-option:focus-within {
-    box-shadow: 5px 10px rgb(253, 72, 141);
+.genre-option:hover, .genre-option:focus-within, .gen-selected, .genre-option:focus-within {
+    background-color: black;
+    color: white;
     cursor: pointer;
-}
-
-.genre-option:focus-within, input[type="radio"]:checked+label {
-    background-color: goldenrod;
 }
 
 #create {
@@ -100,11 +90,6 @@ select {
     margin-bottom: 20px;
 }
 
-#create:hover {
-    background: linear-gradient(to bottom, #c62d1f 5%, #f24537 100%);
-    background-color: #c62d1f;
-}
-
 #create:disabled {
     background: linear-gradient(to bottom, #60666d 5%, #60666d 100%);
     background-color: #60666d;
@@ -114,17 +99,4 @@ select {
 #create:active {
     position: relative;
     top: 1px;
-}
-
-@media only screen and (max-width: 850px) {
-    .genre-option {
-        flex: 1 0 33%;
-    }
-}
-
-@media only screen and (max-width:600px) {
-    .genre-option {
-        font-size: 1.1em;
-        height: 40px;
-    }
 }

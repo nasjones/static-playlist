@@ -1,7 +1,3 @@
-.active>h2 {
-    background-color: orange;
-}
-
 .navLink {
     border: 1px solid black;
     border-right: none;
@@ -17,8 +13,8 @@
 }
 
 .navLink:hover, .addFolder:hover, a:focus>article {
-    background-image: linear-gradient(to top right, rgb(111, 198, 255), pink);
-    /* color: white; */
+    background-color: black;
+    color: white;
 }
 
 #navBar {
@@ -28,8 +24,4 @@
 
 #recent {
     font-family: 'Bungee Shade', cursive;
-}
-
-#b0715efe-ffaf-11e8-8eb2-f2801f1b9fd1 {
-    margin-top: 20px;
 }

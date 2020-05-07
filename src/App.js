@@ -12,72 +12,16 @@ import playStore from './playStore'
 
 class App extends Component {
 
-  state = {
-    genres: [],
-    playlists: [],
-    // records: [],
-    user: null,
-    error: null,
+
+  componentWillMount() {
+    window.globe = { playStore, genreStore }
+
+    console.log(window.globe)
   }
-
-  setGenres = genres => {
-    this.setState({
-      genres
-    })
-  }
-
-  setPlaylists = playlists => {
-    this.setState({
-      playlists
-    })
-  }
-
-  fetcher = () => {
-    // let endpoint = config.ENDPOINT
-    // Promise.all([
-    //   fetch(endpoint + '/playlists'),
-    //   fetch(endpoint + '/genres'),
-
-    //   fetch(endpoint + '/auth')
-    // ],
-    //   {
-    //     method: 'GET',
-    //     headers: {
-    //       'content-type': 'application/json',
-    //     },
-    //   })
-    //   .then(([playlistRes, genreRes, authRes]) => {
-    //     if (!playlistRes.ok)
-    //       return playlistRes.json().then(error => Promise.reject(error))
-    //     if (!genreRes.ok)
-    //       return genreRes.json().then(error => Promise.reject(error))
-    //     if (!authRes.ok)
-    //       return authRes.json().then(error => Promise.reject(error))
-    //     return Promise.all([playlistRes.json(), genreRes.json(), authRes.json()])
-    //   })
-    //   .then(([playlist, genres, auth]) => {
-    //     this.setPlaylists(playlist)
-    //     this.setGenres(genres)
-    //     console.log(auth)
-    //   })
-    //   .catch(error => {
-    //     console.error({ error });
-    //   });
-  }
-
-  componentDidMount() {
-    // this.fetcher()
-  }
-
-  // pageUpdate = () => {
-  //   this.componentDidMount()
-  // }
-
   render() {
     const contextValue = {
-      genres: genreStore,
-      playlists: playStore,
-      pageUpdate: this.fetcher,
+      genres: window.globe.genreStore,
+      playlists: window.globe.playStore,
     }
 
     return (
