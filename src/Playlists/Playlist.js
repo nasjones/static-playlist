@@ -6,9 +6,12 @@ import { render } from '@testing-library/react';
 export default class playlist extends Component {
     constructor(props) {
         super(props);
+
         this.state = {
             hidden: true
         }
+
+
         console.log(props)
 
     }
@@ -42,7 +45,7 @@ export default class playlist extends Component {
         let songDisplay = this.props.songs.map(song => {
             return <Song track={song} key={song.id} />
         })
-        if (!this.state.hidden) {
+        if (!this.state.hidden || window.innerWidth >= 850) {
             return (
                 <div id="playlistDisplay">
                     <img id="ham" src={require('../Ham.png')} alt="ham-icon" onClick={e => {
