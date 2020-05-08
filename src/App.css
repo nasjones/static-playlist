@@ -11,7 +11,7 @@ header>hr {
 
 h1 {
   font-family: 'Bungee Shade', cursive;
-  font-size: 3em;
+  font-size: 2em;
 }
 
 .App {
@@ -25,4 +25,10 @@ h1 {
 
 a, a:visited, a:hover, a:active {
   color: black;
+}
+
+@media only screen and (min-width:850px) {
+  h1 {
+    font-size: 3em;
+  }
 }
