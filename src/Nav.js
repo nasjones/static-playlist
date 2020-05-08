@@ -10,11 +10,11 @@ export default function Nav(props) {
         if (window.globe.playStore.length > 10) {
             return window.globe.playStore.slice(window.globe.playStore.length - 11, window.globe.playStore.length - 1).map(playlist => {
                 let genre = window.globe.genreStore.find(genre => {
-                    return genre.id == playlist.genre_id
+                    return genre.id === playlist.genre_id
                 })
-
+                console.log(playlist.id)
                 return genre && (
-                    <Link exact="true" key={playlist.id} to={`/playlist-display/${playlist.id}`} onClick={props.clicker}>
+                    <Link exact="true" key={playlist.id} to={`/playlist-display/${playlist.id}`} onClick={e => props.clicker(playlist.id)}>
                         <article className="navLink">
                             <h3 id={playlist.id} >{playlist.name}</h3>
                             <span>Genre:{genre.name}</span>
@@ -26,7 +26,7 @@ export default function Nav(props) {
         else {
             return window.globe.playStore.map(playlist => {
                 let genre = window.globe.genreStore.find(genre => {
-                    return genre.id == playlist.genre_id
+                    return genre.id === playlist.genre_id
                 })
 
                 return genre && (
@@ -50,7 +50,7 @@ export default function Nav(props) {
                     console.log(props.hidden)
                     return playlistOut && (
 
-                        <div id="navBar" className="hidden">
+                        <div id="nav hidden" >
                             <h2 id="recent">Most Recent</h2>
                             {playlistOut}
                             <Link to={'/existing-playlists'}  >
@@ -65,7 +65,7 @@ export default function Nav(props) {
                 else {
                     return playlistOut && (
 
-                        <div id="navBar" >
+                        <div id="nav" >
                             <h2 id="recent">Most Recent</h2>
                             {playlistOut}
                             <Link to={'/existing-playlists'}  >

@@ -37,11 +37,11 @@ export default class PlaylistDisplay extends Component {
         console.log(playlistId)
 
         let playlist = window.globe.playStore.find(playlist => {
-            console.log(playlist)
-            return playlist.id == this.props.match.params.playlistId
+            // console.log(playlist)
+            return playlist.id == playlistId
         })
         console.log(playlist)
-        console.log(songStore)
+        // console.log(songStore)
         this.setPlaylist(playlist)
         let runtime = 0
         let songArray = []
@@ -68,7 +68,7 @@ export default class PlaylistDisplay extends Component {
 
         }
         this.addSongs(songArray)
-        console.log(songArray)
+        // console.log(songArray)
 
     }
 

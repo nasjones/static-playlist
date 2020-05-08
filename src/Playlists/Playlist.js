@@ -7,28 +7,52 @@ export default class playlist extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            display: true
+            hidden: true
         }
         console.log(props)
 
     }
 
+    componentDidMount() {
+        window.addEventListener("resize", this.resize.bind(this));
+        this.resize();
+    }
+
+    resize() {
+        let display = (window.innerWidth >= 850);
+        if (display) {
+            this.setState({ hidden: false });
+        }
+        else {
+            this.setState({ hidden: true });
+        }
+
+    }
+
+    clicker = (playlistId) => {
+        this.props.clicker(playlistId)
+        this.setState({
+            hidden: true
+        })
+    }
 
     render() {
+        if (this.props.playlist == undefined) return <h1>Loading..</h1>;
+
         let songDisplay = this.props.songs.map(song => {
             return <Song track={song} key={song.id} />
         })
-        if (!this.state.display) {
+        if (!this.state.hidden) {
             return (
                 <div id="playlistDisplay">
-                    <img id="ham" src={require('../Ham.png')} onClick={e => {
+                    <img id="ham" src={require('../Ham.png')} alt="ham-icon" onClick={e => {
                         this.setState({
-                            display: !this.state.display
+                            hidden: !this.state.hidden
                         })
                     }} />
-                    <div id="nav">
-                        <Nav clicker={this.props.clicker} hidden={window.hide} />
-                    </div>
+
+                    <Nav clicker={this.clicker} hidden={window.hide} />
+
                     <div id="playlistContent">
 
                         <h2 id="playlist-title">{this.props.playlist.name}</h2>
@@ -41,14 +65,12 @@ export default class playlist extends Component {
         else {
             return (
                 <div id="playlistDisplay">
-                    <img id="ham" src={require('../Ham.png')} onClick={e => {
+                    <img id="ham" src={require('../Ham.png')} alt="ham-icon" onClick={e => {
                         this.setState({
-                            display: !this.state.display
+                            hidden: !this.state.hidden
                         })
                     }} />
-                    <div id="nav">
 
-                    </div>
                     <div id="playlistContent">
 
                         <h2 id="playlist-title">{this.props.playlist.name}</h2>

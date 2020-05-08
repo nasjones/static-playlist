@@ -2,6 +2,7 @@
     text-align: center;
     flex: 1;
     position: absolute;
+    margin-top: 15px;
 }
 
 #playlistDisplay {
@@ -13,18 +14,16 @@
 }
 
 #ham {
-    width: 10%;
+    width: 6%;
     position: absolute;
     z-index: 2;
 }
 
-#hidden {
-    display: none;
-}
-
-#nav {
-    position: absolute;
-    z-index: 1;
-    background-color: white;
-    margin-top: 9%;
+@media only screen and (min-width:850px) {
+    #ham {
+        display: none;
+    }
+    #playlistContent {
+        position: inherit;
+    }
 }
