@@ -1,6 +1,7 @@
 #playlistContent {
     text-align: center;
     flex: 1;
+    position: absolute;
 }
 
 #playlistDisplay {
@@ -9,4 +10,21 @@
 
 #playlist-title {
     font-family: 'Bungee Shade', cursive;
+}
+
+#ham {
+    width: 10%;
+    position: absolute;
+    z-index: 2;
+}
+
+#hidden {
+    display: none;
+}
+
+#nav {
+    position: absolute;
+    z-index: 1;
+    background-color: white;
+    margin-top: 9%;
 }

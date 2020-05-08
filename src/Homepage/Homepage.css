@@ -9,7 +9,7 @@
 }
 
 #input-wrap {
-    display: flex;
+    /* display: flex; */
 }
 
 .inputs {
@@ -60,11 +60,17 @@ select {
 
 .user-inputs {
     border: 2px solid black;
+    border-radius: 3px;
+    width: 15%;
 }
 
 .genre-option>input {
     opacity: 1%;
     margin: 0;
+}
+
+fieldset {
+    margin-top: 4%;
 }
 
 .genre-option:hover, .genre-option:focus-within, .gen-selected, .genre-option:focus-within {

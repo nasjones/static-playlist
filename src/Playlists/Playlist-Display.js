@@ -32,8 +32,8 @@ export default class PlaylistDisplay extends Component {
         })
     }
 
-    fetcher = () => {
-        let playlistId = this.props.match.params.playlistId
+    fetcher = (playlistId) => {
+
         console.log(playlistId)
 
         let playlist = window.globe.playStore.find(playlist => {
@@ -73,7 +73,8 @@ export default class PlaylistDisplay extends Component {
     }
 
     componentDidMount() {
-        this.fetcher()
+        let playlistId = this.props.match.params.playlistId
+        this.fetcher(playlistId)
 
     }
 
@@ -93,7 +94,6 @@ export default class PlaylistDisplay extends Component {
         return (
 
             <Playlist playlist={this.state.playlist} songs={this.state.song} clicker={this.fetcher} />
-
 
         )
 

@@ -30,7 +30,7 @@ export default function Nav(props) {
                 })
 
                 return genre && (
-                    <Link exact="true" key={playlist.id} to={`/playlist-display/${playlist.id}`} onClick={props.clicker}>
+                    <Link exact="true" key={playlist.id} to={`/playlist-display/${playlist.id}`} onClick={e => props.clicker(playlist.id)}>
                         <article className="navLink">
                             <h3 id={playlist.id} >{playlist.name}</h3>
                             <span>Genre:{genre.name}</span>
@@ -46,15 +46,37 @@ export default function Nav(props) {
         <PlaylistContext.Consumer>
             {(value) => {
                 let playlistOut = output(value)
-                return playlistOut && (
-                    <div id="navBar">
-                        <h2 id="recent">Most Recent</h2>
-                        {playlistOut}
-                        <Link to={'/existing-playlists'}  >
-                            <h3 className="navLink">See all playlists!</h3>
-                        </Link>
-                    </div>
-                )
+                if (window.hide) {
+                    console.log(props.hidden)
+                    return playlistOut && (
+
+                        <div id="navBar" className="hidden">
+                            <h2 id="recent">Most Recent</h2>
+                            {playlistOut}
+                            <Link to={'/existing-playlists'}  >
+                                <h3 className="navLink">See all playlists!</h3>
+                            </Link>
+                            <Link to={'/homepage'}  >
+                                <h3 className="navLink">Create a playlist</h3>
+                            </Link>
+                        </div>
+                    )
+                }
+                else {
+                    return playlistOut && (
+
+                        <div id="navBar" >
+                            <h2 id="recent">Most Recent</h2>
+                            {playlistOut}
+                            <Link to={'/existing-playlists'}  >
+                                <h3 className="navLink">See all playlists!</h3>
+                            </Link>
+                            <Link to={'/homepage'}  >
+                                <h3 className="navLink">Create a playlist</h3>
+                            </Link>
+                        </div>
+                    )
+                }
 
             }
             }

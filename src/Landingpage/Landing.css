@@ -10,3 +10,7 @@
     margin-left: 10px;
     margin-right: 10px;
 }
+
+#landLinks>a {
+    margin: 5px;
+}

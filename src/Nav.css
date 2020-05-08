@@ -12,7 +12,7 @@
     margin: 8px;
 }
 
-.navLink:hover, .addFolder:hover, a:focus>article {
+.navLink:hover, .addFolder:hover {
     background-color: black;
     color: white;
 }
