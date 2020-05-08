@@ -15,11 +15,11 @@ export default class ExistingPlaylist extends Component {
     }
 
     lister = (value) => {
-        return value.playlists.map(playlist => {
-
+        return window.globe.playStore.map(playlist => {
+            console.log(playlist)
             if (playlist) {
-                let genre = value.genres.find(genre => {
-                    return genre.id === playlist.genre_id
+                let genre = window.globe.genreStore.find(genre => {
+                    return genre.id == playlist.genre_id
                 })
                 return (
                     <Playlister key={playlist.id} id={playlist.id} name={playlist.name} genre={genre} length={playlist.length} />

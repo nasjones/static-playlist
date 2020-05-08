@@ -10,9 +10,9 @@ export default function Nav(props) {
         if (window.globe.playStore.length > 10) {
             return window.globe.playStore.slice(window.globe.playStore.length - 11, window.globe.playStore.length - 1).map(playlist => {
                 let genre = window.globe.genreStore.find(genre => {
-                    return genre.id === playlist.genre_id
+                    return genre.id == playlist.genre_id
                 })
-                console.log(playlist.id)
+
                 return genre && (
                     <Link exact="true" key={playlist.id} to={`/playlist-display/${playlist.id}`} onClick={e => props.clicker(playlist.id)}>
                         <article className="navLink">
@@ -26,7 +26,7 @@ export default function Nav(props) {
         else {
             return window.globe.playStore.map(playlist => {
                 let genre = window.globe.genreStore.find(genre => {
-                    return genre.id === playlist.genre_id
+                    return genre.id == playlist.genre_id
                 })
 
                 return genre && (

@@ -37,15 +37,21 @@ export default class PlaylistDisplay extends Component {
         console.log(playlistId)
 
         let playlist = window.globe.playStore.find(playlist => {
-            // console.log(playlist)
             return playlist.id == playlistId
         })
         console.log(playlist)
-        // console.log(songStore)
+
         this.setPlaylist(playlist)
         let runtime = 0
         let songArray = []
         let chosen = []
+
+        if (playlist == undefined) {
+            this.setState({
+                error: true
+            })
+            return
+        }
 
         while (runtime < playlist.length) {
             let i = Math.floor(Math.random() * 50);
@@ -68,7 +74,6 @@ export default class PlaylistDisplay extends Component {
 
         }
         this.addSongs(songArray)
-        // console.log(songArray)
 
     }
 
@@ -88,6 +93,8 @@ export default class PlaylistDisplay extends Component {
 
 
     render() {
+        if (this.state.error === true) return <div><h1>Sorry there was an error processing your request. Try again later.</h1><a href={'/'}>Home.</a></div>
+
         if (this.state.playlist === null) return <h1>Loading..</h1>;
 
 

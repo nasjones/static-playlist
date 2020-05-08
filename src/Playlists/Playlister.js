@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 
 export default function Playlister(props) {
-
+    // console.log(props)
     return (
         <div className="list-item">
             <Link to={`/playlist-display/${props.id}`} className="title">

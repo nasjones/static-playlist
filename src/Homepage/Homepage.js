@@ -91,18 +91,16 @@ export default class HomePage extends Component {
         e.preventDefault();
         let time = (3600000 * this.state.hour) + (60000 * this.state.min)
         let newPlaylist = {
-            id: value.playlists.length + 1,
+            id: window.globe.playStore.length + 1,
             name: this.state.title.trim(),
             genre_id: this.state.selectedId,
             length: time,
         }
-
+        // value.playlists.push(newPlaylist)
         window.globe.playStore.push(newPlaylist)
         console.log(window.globe.playStore)
         this.props.history.push(`/playlist-display/${newPlaylist.id}`)
         // return [...value.playlists, newPlaylist]
-
-
     }
 
     render() {

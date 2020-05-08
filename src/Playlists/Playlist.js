@@ -11,9 +11,6 @@ export default class playlist extends Component {
             hidden: true
         }
 
-
-        console.log(props)
-
     }
 
     componentDidMount() {
