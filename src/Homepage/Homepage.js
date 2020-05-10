@@ -158,7 +158,10 @@ export default class HomePage extends Component {
                                         {genres}
                                     </div>
                                 </fieldset>
-                                <button type="submit" id="create" onClick={e => value.playlists = this.subHandle(e, value)} disabled={timeError || genreError || titleError}>Create your playlist!</button>
+                                <div id="button-wrap">
+                                    <button type="submit" id="create" onClick={e => this.subHandle(e, value)} disabled={timeError || genreError || titleError}>Create your playlist!</button>
+                                    <button id="create" onClick={e => this.goLand(e)}>Return Home</button>
+                                </div>
                             </form>
                         </div>
                     )

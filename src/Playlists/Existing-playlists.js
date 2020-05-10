@@ -25,7 +25,7 @@ export default class ExistingPlaylist extends Component {
                     <Playlister key={playlist.id} id={playlist.id} name={playlist.name} genre={genre} length={playlist.length} />
                 )
             }
-            return null
+            return
 
         })
     }

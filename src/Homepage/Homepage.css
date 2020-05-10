@@ -8,10 +8,6 @@
     margin: 10px;
 }
 
-#input-wrap {
-    /* display: flex; */
-}
-
 .inputs {
     flex: 1 0 25%;
     margin: 5px;
@@ -100,9 +96,14 @@ fieldset {
     background: linear-gradient(to bottom, #60666d 5%, #60666d 100%);
     background-color: #60666d;
     box-shadow: none;
+    text-decoration: line-through;
 }
 
 #create:active {
     position: relative;
     top: 1px;
+}
+
+#button-wrap {
+    display: inline-grid;
 }
