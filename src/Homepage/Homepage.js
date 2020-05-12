@@ -102,6 +102,10 @@ export default class HomePage extends Component {
         this.props.history.push(`/playlist-display/${newPlaylist.id}`)
         // return [...value.playlists, newPlaylist]
     }
+    goLand = (e) => {
+        e.preventDefault()
+        this.props.history.push('/')
+    }
 
     render() {
 
